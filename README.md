@@ -50,6 +50,12 @@ teletask:
     name: "Led Strip Bedroom 1"
 ```
 
+### Global Attributes
+| name | type | mandatory field | description |
+| ---- | ---- | --------------- | ----------- |
+| host | String | Yes | The IP address or the Hostname where the Teletask DoIP API is running |
+| port | Integer | Yes | The Porrt where the Teletask DoIP API is listening on (default is port 55957) |
+
 ### Light Attributes
 | name | type | mandatory field | description |
 | ---- | ---- | --------------- | ----------- |
