@@ -1,12 +1,13 @@
 {
-  "domain": "teletask",
-  "name": "Teletask",
-  "documentation": "https://www.home-assistant.io/integrations/teletask",
-  "requirements": [
-    "pyteletask==1.0.1"
-  ],
-  "codeowners": [
-    "@tiemooowh"
-  ],
-  "version": "1.0.1"
+    "domain": "teletask",
+    "name": "Teletask",
+    "documentation": "https://github.com/Tiemooowh/homeassistant-teletask",
+    "issue_tracker": "https://github.com/Tiemooowh/homeassistant-teletask/issues",
+    "requirements": [
+        "pyteletask==1.0.1"
+    ],
+    "codeowners": [
+        "@tiemooowh"
+    ],
+    "version": "1.0.1"
 }
