@@ -51,42 +51,16 @@ teletask:
 ```
 
 ### Light Attributes
----
-name: "doip_component"
-type: String
-mandatory: Yes
-description: "Possible Values: relay, locmood, genmood, flag"
----
-name: "address"
-type: String
-mandatory: Yes
-description: "The identifier on the Teletask DoIP Bus for the doip_component type"
----
-name: "brightness_address"
-type: String
-mandatory: No
-description: "The identifier on the Teletask DoIP Bus for the type 'dimmer'"
----
-name: "description"
-type: String
-mandatory: Yes
-description: "Friendly Name"
----
+| name | type | mandatory field | description |
+| ---- | ---- | --------------- | ----------- |
+| doip_component | String | Yes | Possible Values: `relay`, `locmood`, `genmood` and `flag` |
+  address | String | Yes | The identifier on the Teletask DoIP Bus for the doip_component type |
+| brightness_address | String |  No | The identifier on the Teletask DoIP Bus for the type 'dimmer' |
+| description | String | Yes | Friendly Name |
 
 ### Switch Attributes
----
-name: "doip_component"
-type: String
-mandatory: Yes
-description: "Possible Values: relay, locmood, genmood, flag"
----
-name: "address"
-type: String
-mandatory: Yes
-description: "The identifier on the Teletask DoIP Bus for the doip_component type"
----
-name: "description"
-type: String
-mandatory: Yes
-description: "Friendly Name"
----
+| name | type | mandatory field | description |
+| ---- | ---- | --------------- | ----------- |
+| doip_component | String | Yes | Possible Values: `relay`, `locmood`, `genmood` and `flag` |
+  address | String | Yes | The identifier on the Teletask DoIP Bus for the doip_component type |
+| description | String | Yes | Friendly Name |
