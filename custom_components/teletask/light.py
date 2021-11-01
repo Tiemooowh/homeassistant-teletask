@@ -7,13 +7,15 @@ from .const import (
 
 from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
-    SUPPORT_BRIGHTNESS,
+    COLOR_MODE_BRIGHTNESS,
+    COLOR_MODE_ONOFF,
     LightEntity,
 )
 #from homeassistant.components.teletask import DATA_TELETASK
 from homeassistant.const import CONF_NAME
 from homeassistant.core import callback
 import math
+import teletask
 
 import homeassistant.helpers.config_validation as cv
 
@@ -34,24 +36,6 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info)
         await light.current_state()
         hass.data[DOMAIN].teletask.devices.add(light)
         async_add_entities([TeletaskLight(light)])
-
-
-# @callback
-# async def async_add_entities_config(hass, config):
-#     """Set up light for Teletask platform configured within platform."""
-#     import teletask
-
-#     light = teletask.devices.Light(
-#         teletask=hass.data[DOMAIN].teletask,
-#         name=config.get(CONF_NAME),
-#         group_address_switch=config.get("address"),
-#         group_address_brightness=config.get("brightness_address"),
-#         doip_component=config.get("doip_component"),
-#     )
-#     await light.current_state()
-#     hass.data[DOMAIN].teletask.devices.add(light)
-#     async_add_entities([TeletaskLight(light)])
-
 
 class TeletaskLight(LightEntity):
     """Representation of a Teletask light."""
@@ -98,18 +82,25 @@ class TeletaskLight(LightEntity):
         return self.device.state
 
     @property
-    def supported_features(self):
-        """Flag supported features."""
-        flags = 0
+    def color_mode(self):
+        """Return the color mode of the light."""
         if self.device.supports_brightness:
-            flags |= SUPPORT_BRIGHTNESS
-        return flags
+            return COLOR_MODE_BRIGHTNESS
+        return COLOR_MODE_ONOFF
+
+    @property
+    def supported_color_modes(self):
+        """Flag supported color modes."""
+        return {self.color_mode}
 
     async def async_turn_on(self, **kwargs):
         """Turn the light on."""
         if ATTR_BRIGHTNESS in kwargs:
             if self.device.supports_brightness:
-                converted_value = int(kwargs[ATTR_BRIGHTNESS] / 2.55)
+                if(int(kwargs[ATTR_BRIGHTNESS]) <= 3):
+                    converted_value = 0
+                else:
+                    converted_value = int(kwargs[ATTR_BRIGHTNESS] / 2.55)
                 await self.device.set_brightness(converted_value)
         else:
             await self.device.set_on()
