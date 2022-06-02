@@ -7,7 +7,7 @@ You can only be logged into the ComNav/ZeroWire hub with the same user *once*; a
 
 ### From HACS
 
-1. Install HACS if you haven't already (see [installation guide](https://hacs.netlify.com/docs/installation/manual)).
+1. Install HACS if you haven't already (see [installation guide](https://hacs.xyz/docs/setup/download)).
 2. Find and install **Teletask** integration in HACS's "Integrations" tab.
 3. Restart your Home Assistant.
 4. Add "Teletask" integration in Home Assistant's config file 'configuration.yaml'
