@@ -72,9 +72,13 @@ class TeletaskLight(LightEntity):
     @property
     def brightness(self):
         """Return the brightness of this light between 0..100."""
-        return (
-            int(self.device.current_brightness * 2.55) if self.device.supports_brightness else None
-        )
+        if self.device.supports_brightness:
+            try:
+                return int(self.device.current_brightness * 2.55)
+            except:
+                return 0
+        else:
+            return 0
 
     @property
     def is_on(self):
