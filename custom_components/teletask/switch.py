@@ -30,16 +30,18 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info)
         )
         await switch.current_state()
         hass.data[DOMAIN].teletask.devices.add(switch)
-        async_add_entities([TeletaskSwitch(switch)])
+        async_add_entities([TeletaskSwitch(switch, config.get("unique_id"))])
 
 
 class TeletaskSwitch(SwitchEntity):
     """Representation of a Teletask Switch."""
 
-    def __init__(self, device):
+    def __init__(self, device, unique_id):
         """Initialize of Teletask Switch."""
         self.device = device
         self.teletask = device.teletask
+        if unique_id is not None:
+            self._attr_unique_id = unique_id
 
     @callback
     def async_register_callbacks(self):
