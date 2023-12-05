@@ -1,3 +1,10 @@
+# Deprecation Notice
+
+This repository is deprecated; Due to me moving out of my house with a Teletask Central Unit, I'm not longer able to maintain this Repository.
+Feel free to fork!
+
+----
+
 # Teletask Integration for Home Assistant
 
 ## Installation
